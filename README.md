@@ -1,4 +1,4 @@
-# Docker fossil
+# Docker Fossil
 [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/nicholaswilde/fossil)](https://hub.docker.com/r/nicholaswilde/fossil)
 [![Docker Pulls](https://img.shields.io/docker/pulls/nicholaswilde/fossil)](https://hub.docker.com/r/nicholaswilde/fossil)
 [![GitHub](https://img.shields.io/github/license/nicholaswilde/docker-fossil)](./LICENSE)
@@ -6,7 +6,7 @@
 [![lint](https://github.com/nicholaswilde/docker-fossil/workflows/lint/badge.svg?branch=main)](https://github.com/nicholaswilde/docker-fossil/actions?query=workflow%3Alint)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-A fossil repo for Docker images.
+A multi-architecture Docker image for [Fossil](https://www.fossil-scm.org/home/doc/trunk/www/index.wiki).
 
 ## Requirements
 - [buildx](https://docs.docker.com/engine/reference/commandline/buildx/)
