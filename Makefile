@@ -1,13 +1,6 @@
 include make.env
 
 BUILD_DATE ?= $(shell date -u +%Y-%m-%dT%H%M%SZ)
-NS ?= nicholaswilde
-VERSION ?= 0.1.0
-LS ?= 1
-
-IMAGE_NAME ?= template
-CONTAINER_NAME ?= template
-CONTAINER_INSTANCE ?= default
 
 .PHONY: push push-latest run rm help vars shell prune
 
@@ -70,7 +63,7 @@ stop:
 	docker stop $(CONTAINER_NAME)-$(CONTAINER_INSTANCE)
 
 checksum:
-	wget https://sourceforge.net/projects/forma/files/version-2.x/formalms-v$(VERSION).zip/download -O- -q | sha256sum
+	curl "https://www.fossil-scm.org/index.html/tarball/fossil-src.tar.gz?name=fossil-src&uuid=version-2.14" | sha256sum
 
 ## help   	: Show help
 help: Makefile

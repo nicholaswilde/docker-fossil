@@ -19,7 +19,7 @@ on:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Version'
         # Default value if no value is explicitly provided
-        default: '2.3.0.2-ls1'
+        default: '2.14-ls1'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -75,9 +75,9 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           push: true
           tags: |
-            nicholaswilde/template:latest
-            nicholaswilde/template:${{ github.event.inputs.version }}
-            ghcr.io/nicholaswilde/template:latest
-            ghcr.io/nicholaswilde/template:${{ github.event.inputs.version }}
-            quay.io/nicholaswilde/template:latest
-            quay.io/nicholaswilde/template:${{ github.event.inputs.version }}
+            nicholaswilde/fossil:latest
+            nicholaswilde/fossil:${{ github.event.inputs.version }}
+            ghcr.io/nicholaswilde/fossil:latest
+            ghcr.io/nicholaswilde/fossil:${{ github.event.inputs.version }}
+            quay.io/nicholaswilde/fossil:latest
+            quay.io/nicholaswilde/fossil:${{ github.event.inputs.version }}

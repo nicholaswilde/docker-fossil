@@ -1,12 +1,12 @@
-# Docker Template
-[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/nicholaswilde/template)](https://hub.docker.com/r/nicholaswilde/template)
-[![Docker Pulls](https://img.shields.io/docker/pulls/nicholaswilde/template)](https://hub.docker.com/r/nicholaswilde/template)
-[![GitHub](https://img.shields.io/github/license/nicholaswilde/docker-template)](./LICENSE)
-[![ci](https://github.com/nicholaswilde/docker-template/workflows/ci/badge.svg)](https://github.com/nicholaswilde/docker-template/actions?query=workflow%3Aci)
-[![lint](https://github.com/nicholaswilde/docker-template/workflows/lint/badge.svg?branch=main)](https://github.com/nicholaswilde/docker-template/actions?query=workflow%3Alint)
+# Docker fossil
+[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/nicholaswilde/fossil)](https://hub.docker.com/r/nicholaswilde/fossil)
+[![Docker Pulls](https://img.shields.io/docker/pulls/nicholaswilde/fossil)](https://hub.docker.com/r/nicholaswilde/fossil)
+[![GitHub](https://img.shields.io/github/license/nicholaswilde/docker-fossil)](./LICENSE)
+[![ci](https://github.com/nicholaswilde/docker-fossil/workflows/ci/badge.svg)](https://github.com/nicholaswilde/docker-fossil/actions?query=workflow%3Aci)
+[![lint](https://github.com/nicholaswilde/docker-fossil/workflows/lint/badge.svg?branch=main)](https://github.com/nicholaswilde/docker-fossil/actions?query=workflow%3Alint)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-A template repo for Docker images.
+A fossil repo for Docker images.
 
 ## Requirements
 - [buildx](https://docs.docker.com/engine/reference/commandline/buildx/)
@@ -17,35 +17,31 @@ A template repo for Docker images.
 ---
 version: "2.1"
 services:
-  template:
-    image: nicholaswilde/template
-    container_name: template
+  fossil:
+    image: nicholaswilde/fossil
+    container_name: fossil
     environment:
       - TZ=America/Los_Angeles #optional
       - PUID=1000   #optional
       - PGID=1000   #optional
     ports:
-      - 3000:3000
+      - 8080:8080
     restart: unless-stopped
     volumes:
       - app:/app
-      - config:/config
-      - defaults:/defaults
 volumes:
   app:
-  config:
-  defaults:
 ```
 ### docker cli
 ```bash
 $ docker run -d \
-  --name=template \
+  --name=fossil \
   -e TZ=America/Los_Angeles `# optional` \
   -e PUID=1000  `# optional` \
   -e PGID=1000   `# optional` \
-  -p 3000:3000 \
+  -p 8080:8080 \
   --restart unless-stopped \
-  nicholaswilde/template
+  nicholaswilde/fossil
 ```
 
 ## Build
@@ -75,6 +71,10 @@ pre-commit install
 pre-commit install-hooks
 ```
 Currently, this only works on `amd64` systems.
+
+## Inspiration
+
+Inspiration for this repository has been taken from [Duvel/docker-fossil](https://github.com/Duvel/docker-fossil).
 
 ## License
 
