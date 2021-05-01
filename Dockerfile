@@ -1,6 +1,6 @@
-FROM alpine:3.13.0 as base
-ARG VERSION=2.14
-ARG CHECKSUM=50455c129d3fa8a66d86d732c9bde44471c08cf01fa2b785a03aa68da211e369
+FROM alpine:3.13.5 as base
+ARG VERSION=2.15.1
+ARG CHECKSUM=80d27923c663b2a2c710f8ae8cd549862e04f8c04285706274c34ae3c8ca17d1
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN \
   echo "**** install packages ****" && \
@@ -9,14 +9,13 @@ RUN \
     sqlite-dev=3.34.1-r0 \
     tcl-dev=8.6.10-r1 \
     zlib-dev=1.2.11-r3 \
-    curl=7.74.0-r0 \
+    curl=7.76.1-r0 \
     alpine-sdk=1.0-r0 && \
-  wget "https://www.fossil-scm.org/index.html/tarball/fossil-src.tar.gz?name=fossil-src&uuid=version-${VERSION}" -O fossil-src.tar.gz && \
+  wget "https://www.fossil-scm.org/home/uv/fossil-src-${VERSION}.tar.gz" -qO fossil-src.tar.gz && \
   echo "${CHECKSUM}  fossil-src.tar.gz" | sha256sum -c && \
-  tar -xvf fossil-src.tar.gz
-WORKDIR /fossil-src
-RUN \
+  tar --strip-components=1 -xvf fossil-src.tar.gz && \
   echo "**** configure fossil ****" && \
+  ls && \
   ./configure \
     --disable-fusefs \
     --json \
@@ -32,10 +31,11 @@ RUN \
 FROM ghcr.io/linuxserver/baseimage-alpine:3.13
 ARG BUILD_DATE
 ARG VERSION
+# hadolint ignore=DL3048
 LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="nicholaswilde"
 ENV HOME /app
-COPY --from=base /fossil-src/fossil /usr/bin/
+COPY --from=base /fossil /usr/bin/
 RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
