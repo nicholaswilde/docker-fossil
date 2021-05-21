@@ -1,6 +1,6 @@
 FROM alpine:3.13.5 as base
-ARG VERSION=2.15.1
-ARG CHECKSUM=80d27923c663b2a2c710f8ae8cd549862e04f8c04285706274c34ae3c8ca17d1
+ARG VERSION
+ARG CHECKSUM
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN \
   echo "**** install packages ****" && \

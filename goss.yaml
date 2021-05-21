@@ -1,0 +1,19 @@
+---
+port:
+  tcp:8080:
+    listening: true
+    ip:
+      - 0.0.0.0
+
+process:
+  fossil:
+    running: true
+
+http:
+  http://localhost:8080/index:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 0
+    body:
+      - '<title>Unnamed Fossil Project: Home</title>'
