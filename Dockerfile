@@ -9,7 +9,7 @@ RUN \
     sqlite-dev=3.34.1-r0 \
     tcl-dev=8.6.10-r1 \
     zlib-dev=1.2.11-r3 \
-    curl=7.76.1-r0 \
+    curl=7.77.0-r0 \
     alpine-sdk=1.0-r0 && \
   wget "https://www.fossil-scm.org/home/uv/fossil-src-${VERSION}.tar.gz" -qO fossil-src.tar.gz && \
   echo "${CHECKSUM}  fossil-src.tar.gz" | sha256sum -c && \
@@ -44,6 +44,7 @@ RUN \
   chown -R abc:abc /app && \
   echo "**** cleanup ****" && \
   rm -rf /tmp/*
+# copy local files
+COPY root/ /
 EXPOSE 8080
 VOLUME /app
-CMD ["/usr/bin/fossil", "server", "--create", "--user", "admin", "/app/repository.fossil"]

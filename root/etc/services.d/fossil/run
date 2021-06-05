@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+
+cd /app || exit
+
+exec \
+	s6-setuidgid abc \
+    /usr/bin/fossil \
+    server \
+    --create \
+    --user admin \
+    /app/repository.fossil
