@@ -28,7 +28,7 @@ RUN \
   strip fossil && \
   chmod a+rx fossil
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.13
+FROM ghcr.io/linuxserver/baseimage-alpine:3.19
 ARG BUILD_DATE
 ARG VERSION
 # hadolint ignore=DL3048
