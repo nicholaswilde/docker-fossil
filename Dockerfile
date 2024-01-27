@@ -1,4 +1,4 @@
-FROM alpine:3.13.5 as base
+FROM alpine:3.19.1 as base
 ARG VERSION
 ARG CHECKSUM
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
