@@ -83,7 +83,7 @@ jobs:
       exists: ${{ steps.checkTag.outputs.exists }}
     steps:
       - name: Check if tag already exists
-        uses: mukunku/tag-exists-action@v1.0.0
+        uses: mukunku/tag-exists-action@v1.6.0
         id: checkTag
         with:
           tag: ${{ needs.prep.outputs.tag }}
